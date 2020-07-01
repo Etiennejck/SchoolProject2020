@@ -7,5 +7,13 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:54320/db_school</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="ad87027a-c2f8-4e45-a144-82488c5e12c8">
+      <driver-ref>greenplum</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/SchoolProject2020/settings.py</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:54320/db_school</jdbc-url>
+    </data-source>
   </component>
 </project>
