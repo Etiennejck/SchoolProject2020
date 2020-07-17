@@ -114,3 +114,7 @@ class Family_TieViewSet(viewsets.ModelViewSet):
 class AbsenceViewSet(viewsets.ModelViewSet):
     queryset = Absence.objects.all()
     serializer_class = AbsenceSerializer
+
+
+def index(request):
+    return render(request, "index.html")

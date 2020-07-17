@@ -25,7 +25,7 @@ SECRET_KEY = 'um5@%$y&!n%ye$u+v0%1@#i3dd546vh!7qph$fv55x)(qg%-5('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'School_API',
     'rest_framework',
     'phonenumber_field',
+    'School_WEB',
 ]
 
 MIDDLEWARE = [
