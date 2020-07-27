@@ -117,4 +117,4 @@ class AbsenceViewSet(viewsets.ModelViewSet):
 
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "base.html")

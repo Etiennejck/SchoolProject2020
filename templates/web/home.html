@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col s7 " id="actu" >
+            <label class="collection-header"><h4>Actualités</h4></label>
+             <div class="collection">
+                <a href="#!" class="collection-item"><i class=" material-icons pulse">fiber_new </i> Actu1</a>
+                <a href="#!" class="collection-item">Actu2</a>
+                <a href="#!" class="collection-item">Actu3</a>
+                <a href="#!" class="collection-item">Actu4</a>
+                <a href="#!" class="collection-item">Actu5</a>
+             </div>
+        </div>
+
+        <div class="col s5 hoverable" id="loginSection">
+            <div class="container">
+            <label><h4>Login</h4></label>
+            <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="email" type="email" class="validate">
+                      <label for="email">Email</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                      <input id="password" type="password" class="validate">
+                      <label for="password">Password</label>
+                    </div>
+                  </div>
+                    <button class="btn waves-effect waves-light right" style="background-color:#3a4ab1" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12" id="section">
+            <label><h4>Sections</h4></label>
+             <div class="col s6 ">
+                <div class="card horizontal">
+                  <div class="card-image">
+                    <img src="https://www.perinat-france.org/sites/default/files/crèche.jpg">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">plus d'infos</a>
+                    </div>
+                  </div>
+                </div>
+             </div>
+
+             <div class="col s6 ">
+                <div class="card horizontal">
+                  <div class="card-image">
+                    <img src="https://www.lesclefsdelecole.com/var/lesclefsdelecole/storage/images/primaire/methodologie-primaire/comment-produire-des-textes-au-cp/1213039-1-fre-FR/Comment-produire-des-textes-au-CP_w720h415.jpg">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p>I am a very simple card. I am good at containing small bits of information.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">plus d'infos</a>
+                    </div>
+                  </div>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s4 hoverable" id="section" >
+            <label><h4>Agenda</h4></label>
+            <div class="collection">
+                <a class="collection-item">
+                    <div>
+                        <h6 class="col s12">Titre event</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>date event</label>
+                        <i class="material-icons">location_on</i>
+                        <label>place event</label>
+                        <p>Description event</p>
+
+                    </div>
+                </a>
+
+                <a class="collection-item">
+                    <div>
+                        <h6 class="col s12">Titre event</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>date event</label>
+                        <i class="material-icons">location_on</i>
+                        <label>place event</label>
+                        <p>Description event</p>
+
+                    </div>
+                </a>
+
+                <a class="collection-item">
+                    <div>
+                        <h6 class="col s12">Titre event</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>date event</label>
+                        <i class="material-icons">location_on</i>
+                        <label>place event</label>
+                        <p>Description event</p>
+
+                    </div>
+                </a>
+
+            </div>
+        </div>
+        <div class="col s4 center-align"  id="agenda" >
+            <label><h4>Suivez-nous</h4></label>
+            <a href="https://www.facebook.com/Mariadal-Hoegaarden-226120254089280/" ><img height="140px" width="140px" class="circle " src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Facebook_Home_logo_old.svg/600px-Facebook_Home_logo_old.svg.png"></a>
+            <a href="https://www.facebook.com/Mariadal-Hoegaarden-226120254089280/" ><img style="margin-top: 10px " height="159px" width="155px" class="circle " src="https://i.ya-webdesign.com/images/linkedin-icon-png-circle-2.png"></a>
+
+        </div>
+        <div class="col s4" id="agenda" >
+
+        </div>
+    </div>
+{% endblock %}
