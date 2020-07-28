@@ -1,11 +1,21 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'bouton_dashboard.css' %}">
+
 </head>
 <body>
-
+    <ul>
+        <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+    </ul>
 </body>
 </html>
