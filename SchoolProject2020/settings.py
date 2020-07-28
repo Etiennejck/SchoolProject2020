@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'db_school',
         'USER': 'postgres',
         'PORT': '54320',
-        'HOST': 'localhost',
+        'HOST': 'skolapp.alwaysdata.net',
         'PASSWORD': 'Minouch@',
     }
 }
