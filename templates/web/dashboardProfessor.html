@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Dashboard Parent</title>
+        <title>Dashboard Professeur</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
@@ -110,7 +110,7 @@ body{
 .wrapper .sidebar .sidebar-menu .profile img{
   margin: 20px 0;
   width: 100px;
-  height: 150px;
+  height: 100px;
 
 }
 
@@ -231,7 +231,7 @@ body{
 
     </style>
     <body>
-{% if user.is_authenticated %}
+
         <!--wrapper start-->
         <div class="wrapper">
             <!--header menu start-->
@@ -240,7 +240,7 @@ body{
                     <div class="title">Mariadal <span>School</span></div>
                     <div class="sidebar-btn">
                         <i class="fas fa-bars" style="margin: 30px"> </i>
-                        <i class="fas fa-user">{{ user.first_name }} - {{ heureEnvoi }}</i>
+                        <i class="fas fa-user">  Laura Mortier</i>
                     </div>
                     <ul>
                         <li><a href="#"><i class="fas fa-search"></i></a></li>
@@ -254,12 +254,12 @@ body{
             <div class="sidebar">
                 <div class="sidebar-menu">
                     <center class="profile">
-                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" alt="">
-                        <p>Jessica</p>
+                        <img src="{% static 'images/MArieadal Logo.png' %}" alt="">
+                        <p>Classe des dragons</p>
                     </center>
                     <li class="item">
                         <a href="profile" class="menu-btn">
-                            <i class="fas fa-desktop"></i><span>Dashboard</span>
+                            <i class="fas fa-desktop"></i><span>Présence</span>
                         </a>
                     </li>
                     <li class="item" id="profile">
@@ -321,10 +321,10 @@ body{
             <!--main container start-->
             <div class="main-container">
                 <div class="card" id="ajaxload">
-                    <p>Bienvenu sur votre dashboard</p>
+                    <p>Liste des présences des enfents</p>
                 </div>
                 <div class="card">
-                    <p> ici sera afficher en permanence le status de votre enfant</p>
+                    <p> les différents messages</p>
                 </div>
                 <div class="card">
                     <p> et ici les différentes informations </p>
@@ -333,7 +333,7 @@ body{
             <!--main container end-->
         </div>
         <!--wrapper end-->
-{% endif %}
+
         <script type="text/javascript">
         $(document).ready(function(){
             $(".sidebar-btn").click(function(){

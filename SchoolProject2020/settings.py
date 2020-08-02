@@ -25,7 +25,7 @@ SECRET_KEY = 'um5@%$y&!n%ye$u+v0%1@#i3dd546vh!7qph$fv55x)(qg%-5('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['skolapp.alwaysdata.net']
+ALLOWED_HOSTS = []
 
 
 
@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'db_school',
         'USER': 'postgres',
         'PORT': '54320',
-        'HOST': 'skolapp.alwaysdata.net',
+        'HOST': 'localhost',
         'PASSWORD': 'Minouch@',
     }
 }

@@ -55,7 +55,7 @@ router.register(r'absence', views.AbsenceViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('School_WEB.urls')),
-    url(r'^api', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
