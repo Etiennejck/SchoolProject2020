@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^dashboardProfessor/', views.dashboardProfessor, name='dashboardProfessor'),
     url(r'^dashboardDirection/', views.dashboardDirection, name='dashboardDirection'),
     url(r'^JournalDeClasse/', views.JournalDeClasse, name='JournalDeClasse'),
-
+    url(r'^LogOut_view/', views.LogOut_view, name='LogOut_view'),
+    url(r'^login', views.login, name='login'),
+    url(r'^homeSchool/', views.homeSchool, name='homeSchool'),
 
     ]

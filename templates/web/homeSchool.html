@@ -1,0 +1,532 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&display=swap');
+    body
+    {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: 'PT Sans Narrow', sans-serif;
+    }
+    .open
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 10000;
+    }
+    .open .layer
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: top;
+        animation: open 1s ease-in-out forwards;
+    }
+    .open .layer:nth-child(1)
+    {
+        background: #000;
+        z-index: 2;
+    }
+    .open .layer:nth-child(2)
+    {
+        background: #03a9f4;
+        animation-delay: 1s;
+        z-index: 1;
+    }
+    @keyframes open {
+        0%
+        {
+            transform: scaleY(1);
+        }
+        100%
+        {
+            transform: scaleY(0);
+        }
+    }
+    section
+    {
+
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+    .bannerText
+    {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        max-width: 700px;
+    }
+    .bannerText h2,
+    .bannerText h3
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        transform-origin: left;
+        text-transform: uppercase;
+        transform: scaleX(0);
+        animation: revealTextReverse 1s ease-in-out forwards;
+
+    }
+    .bannerText h2
+    {
+        font-size: 6em;
+        animation-delay: 2s;
+    }
+    .bannerText h3
+    {
+        font-size: 3em;
+        animation-delay: 3s;
+    }
+    .bannerText h2:before,
+    .bannerText h3:before
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #000;
+        width: 100%;
+        height: 100%;
+        transform-origin: right;
+        animation: revealText 1s ease-in-out forwards;
+        animation-delay: 3s;
+    }
+    .bannerText h3:before{
+        animation-delay: 4s;
+    }
+    @keyframes revealText {
+        0%
+        {
+            transform: scaleX(1);
+        }
+        100%
+        {
+            transform: scaleX(0);
+        }
+    }
+    @keyframes revealTextReverse {
+        0%
+        {
+            transform: scaleX(0);
+        }
+        100%
+        {
+            transform: scaleX(1);
+        }
+    }
+    .bannerText p, br, h4{
+        opacity: 0;
+        font-weight: 400;
+        font-size: 1.2em;
+        animation: fadeIn 1s linear forwards;
+        animation-delay: 5s;
+    }
+    @keyframes fadeIn {
+        0%
+        {
+            opacity: 0;
+        }
+        100%
+        {
+            opacity: 1;
+        }
+    }
+    .bannerText a{
+        opacity: 0;
+        display: inline-block;
+        margin: 20px 0 0;
+        padding: 10px 20px;
+        background: #000;
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.2em;
+        letter-spacing: 1px;
+        animation: fadeInBottom 0.5s linear forwards;
+        animation-delay: 5.5s;
+    }
+    @keyframes fadeInBottom {
+        0%
+        {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100%
+        {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .bulb
+    {
+        opacity: 0;
+        position: absolute;
+        right: -10%;
+        bottom: -40%;
+        transform: translateY(-50%);
+        animation: fadeIn 1s linear forwards;
+        animation-delay: 6s;
+    }
+    .sci
+{
+	position: absolute;
+	bottom: 15px;
+	right: 30px;
+	display: flex;
+	flex-direction: column;
+}
+.sci li
+{
+	opacity: 0;
+	list-style: none;
+	padding: 10px 0;
+	text-align: center;
+	animation: fadeInBottom 0.5s linear forwards;
+}
+.header ul li:nth-child(1),
+.sci li:nth-child(1)
+{
+	animation-delay: 5s;
+}
+.header ul li:nth-child(2),
+.sci li:nth-child(2)
+{
+	animation-delay: 5.25s;
+}
+.header ul li:nth-child(3),
+.sci li:nth-child(3)
+{
+	animation-delay: 5.5s;
+}
+.header ul li:nth-child(4),
+.sci li:nth-child(4)
+{
+	animation-delay: 5.75s;
+}
+.header ul li:nth-child(5),
+.sci li:nth-child(5)
+{
+	animation-delay: 6s;
+}
+.header ul li:nth-child(6),
+.sci li:nth-child(6)
+{
+	animation-delay: 6.25s;
+}
+.header ul li:nth-child(7),
+.sci li:nth-child(6)
+{
+	animation-delay: 6.25s;
+}
+.header ul li:nth-child(8),
+.sci li:nth-child(6)
+{
+	animation-delay: 6.25s;
+}
+.sci li a
+{
+	font-size: 1.2em;
+	color: #000;
+}
+.header
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	padding: 0 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+    z-index: 10000;
+}
+.header .logo
+{
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	text-transform: uppercase;
+	animation: fadeIn 0.5s linear forwards;
+	animation-delay: 5s;
+}
+.header ul
+{
+	margin: 0;
+	padding: 0;
+	z-index: 100;
+	display: flex;
+}
+.header ul li
+{
+	opacity: 0;
+	list-style: none;
+	margin: 0 10px;
+	animation: fadeInRight 0.5s linear forwards;
+}
+.header ul li:last-child
+{
+	margin-right: 0;
+}
+.header ul li a
+{
+	text-decoration: none;
+	font-size: 1.2em;
+	color: #000;
+	padding: 5px 10px;
+	letter-spacing: 2px;
+}
+.header ul li a.active,
+.header ul li a:hover
+{
+	background: dodgerblue;
+	color: #fff;
+}
+@keyframes fadeInRight
+{
+	0%
+	{
+		transform: translateX(150px);
+		opacity: 0;
+	}
+	100%
+	{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+.element1
+{
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+	right: 40%;
+	width: 250px;
+	height: 250px;
+	border: 30px solid greenyellow;
+	animation: rotate 40s linear infinite, fadeIn 1s linear forwards;
+	animation-delay: 7s;
+}
+.element2
+{
+	opacity: 0;
+	position: absolute;
+	left: -10px;
+	top: 40%;
+	width: 50px;
+	height: 50px;
+	border: 2px solid deeppink;
+	animation: rotate 30s linear infinite, fadeIn 1s linear forwards;
+	animation-delay: 7s;
+}
+@keyframes rotate
+{
+	0%
+	{
+		transform: rotate(45deg);
+	}
+	100%
+	{
+		transform: rotate(405deg);
+	}
+}
+.fa-times.x2,
+.fa-bars.x2
+{
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 1280px)
+{
+    section
+    {
+        height: auto !important;
+        display: initial;
+        padding: 100px;
+        box-sizing: border-box;
+    }
+    .bannerText
+    {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-top: 100px;
+        transform: translateY(0);
+        max-width: 700px;
+        z-index: 1001;
+    }
+    .sci
+    {
+        z-index: 1002;
+        right: 20px;
+        
+    }
+}
+@media (max-width: 991px)
+{
+    .fa-bars.x2
+    {
+        display: block;
+    }
+    .fa-times.x2
+    {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        display: block;
+    }
+    .bannerText h2
+    {
+        font-size: 3em;
+    }
+    .bannerText h3
+    {
+        font-size: 1.5em;
+    }
+    .element1
+    {
+        display: none;
+    }
+    .header ul
+    {
+        position: fixed;
+        background: #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        z-index: 1010;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: scroll;
+    }
+    .header ul.show
+    {
+        display: flex;
+    }
+    .header ul li
+    {
+        margin: 10px 0;
+    }
+    .header ul li:nth-child(1),
+    .header ul li:nth-child(2),
+    .header ul li:nth-child(3),
+    .header ul li:nth-child(4),
+    .header ul li:nth-child(5),
+    .header ul li:nth-child(6),
+    .header ul li:nth-child(7),
+    .header ul li:nth-child(8)
+    {
+        animation-delay: 0s !important;
+    }
+}
+@media (max-width: 991px){
+    section
+    {
+        padding: 50px 80px 50px 50px;
+    }
+    .header
+    {
+        padding: 0 50px;
+    }
+}
+</style>
+<body>
+    <div class="open">
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
+    <section>
+        <div class="header">
+				<h2 class="logo"><img style="width: 100px" src="{% static 'images/MArieadal Logo.png' %}"> </h2>
+            <i class="fa fa-bars x2" onclick="menuToggle()"></i>
+            <ul id="navigation">
+					<li>
+						<a href="{% url 'home' %}" class="active">Home</a>
+					</li>
+					<li>
+						<a href="#">Section</a>
+					</li>
+					<li>
+						<a href="{% url 'dashboardProfessor' %}">Login</a>
+					</li>
+					<li>
+						<a href="#">Our Work</a>
+					</li>
+					<li>
+						<a href="#">Portfolio</a>
+					</li>
+					<li>
+						<a href="#">Contact</a>
+					</li>
+                    <li>
+						<a href="{% url 'dashboardDirection' %}">Direction</a>
+					</li>
+                    <li>
+						<a href="#">API</a>
+					</li>
+                <i class="fa fa-times x2" onclick="menuToggle()"></i>
+				</ul>
+        </div>
+        <div class="bannerText">
+           <h2>Welcom to</h2><br>
+            <h3>Mariadal BasicSchool</h3>
+            <p>UPDATE! Wegens de COVID-maatregelen en beperkingen die momenteel op school gelden zijn externen niet op school toegelaten. Hierdoor is een bezoek aan de school voor inschrijvingen voorlopig niet mogelijk. Gesprekken voor inschrijvingen gebeuren daardoor nu telefonisch en inschrijvingsdocumenten kunnen digitaal verstuurd worden zodat inschrijven toch mogelijk blijft.</p>
+                <br>
+            <h4>INSCHRIJVINGEN SCHOOLJAAR 2020-2021</h4>
+            <p>In samenspraak met het schoolbestuur geldt er enkel voor de inschrijvingen voor het schooljaar 2020-2021 geen capaciteitsbepaling.
+            De correcte instapdatum van uw kleuter kan u heel makkelijk te weten komen door de geboortedatum van uw kind in te geven op de daartoe bestaande site van Onderwijs Vlaanderen: Berekening instapdatum kleuters.
+            Inschrijvingen tijdens de grote vakantie (2020) zijn mogelijk op 1, 2, en 3 juli en 26, 27 en 28 augustus 2020. U dient daarvoor eerst vooraf een afspraak te maken via het contactformulier (envelopje) op de website.
+            Mogen wij u vriendelijk vragen om bij de inschrijving van uw kind(eren) de SIS-kaart en/of kids-ID van uw kind mee te brengen.
+            </p>
+            <p>INSCHRIJVINGEN SCHOOLJAAR 2021-2022<br>
+                Voor de inschrijvingen van het schooljaar 2021-2022 werken we opnieuw met een capaciteitsbepaling om het leerlingenaantal beheersbaar te houden en om op die manier de kwaliteit van ons onderwijs te blijven garanderen. In samenspraak met het schoolbestuur ligt de maximumcapaciteit voor de kleuters op 185 en voor de lagere school op 316.</p>
+            <a href="#">read more</a>
+        </div>
+        <img src="{% static 'images/kisspng-germany-fiestas-de-san-miguel-municipality-of-nava-holi-festival-5a6c3452f1a895.9831097015170407229899.png' %}" class="bulb" >
+        <ul class="sci">
+				<li><a href="https://www.facebook.com/OuderraadMariadalHoegaardenBasisschool/"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			</ul>
+			<div class="element1"></div>
+			<div class="element2"></div>
+    </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    function menuToggle(argument){
+        var element = document.getElementById("navigation");
+        element.classList.toggle("show");
+    }
+</script>
+</body>
+</html>

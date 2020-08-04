@@ -1,15 +1,25 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
 import datetime
 from School_Models.models import Student, Parent
 from django.contrib import messages
 
 def home(request):
+    if request.method == 'POST':
+        username = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request,username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboardParent')
+        else:
+            messages.info(request, 'your email or password is not correct',)
+            return redirect('home')
 
     return render(request, 'web/home.html')
 
 def dashboardParent(request):
-    if request.user.is_authenticated and not request.user.groups.exists():
+    if request.user.is_authenticated and request.user.groups.exists():
         user = request.user
         heureEnvoi = datetime.datetime.now()
 
@@ -37,6 +47,7 @@ def JournalDeClasse(request):
     Stud = Student.objects.all()
     Pare = [p.name for p in Parent.objects.all()]
 
+
     printDate = datetime.datetime.now()
     studentJDC = {
         "Date": printDate.strftime('%x'),
@@ -51,16 +62,9 @@ def JournalDeClasse(request):
 
     return render(request, 'web/JournalDeClasse.html',contextList)
 
-def LoginParent(request, **kwargs):
-    if request.method == 'POST':
-        username = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request,username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('dashboardParent')
-        else:
-            messages.error(request, 'your email or password is not correct', extra_tags='test')
-            return redirect('welcom')
-
+def LogOut_view(request):
+    logout(request)
     return render(request, 'web/home.html')
+
+def homeSchool(request):
+    return render(request, 'web/homeSchool.html')
