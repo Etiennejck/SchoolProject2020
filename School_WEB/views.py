@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 import datetime
 from School_Models.models import Student, Parent
 from django.contrib import messages
+import requests,json
+from School_API import views
 
 def home(request):
     if request.method == 'POST':
@@ -11,7 +13,7 @@ def home(request):
         user = authenticate(request,username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboardParent')
+            return redirect('logindpp')
         else:
             messages.info(request, 'your email or password is not correct',)
             return redirect('home')
@@ -21,6 +23,7 @@ def home(request):
 def dashboardParent(request):
     if request.user.is_authenticated and request.user.groups.exists():
         user = request.user
+        ugr = request.user.groups
         heureEnvoi = datetime.datetime.now()
 
         print(user.email, user.id)
@@ -29,7 +32,7 @@ def dashboardParent(request):
             Student.objects.filter(parents_id__mail=user.email).update(class_journal=message)
 
         return render(request, 'web/dashboardParent.html',
-                      {'user': user, 'heureEnvoi': heureEnvoi.strftime('%X')})
+                      {'user': user, 'heureEnvoi': heureEnvoi.strftime('%X'), 'ugr':ugr})
     else:
         messages.info(request, 'Vous n\'est pas encore inscrit ', )
         return redirect('home')
@@ -37,7 +40,14 @@ def dashboardParent(request):
 
 def dashboardProfessor(request):
 
-    return render(request, 'web/dashboardProfessor.html')
+    if request.user.is_authenticated and request.user.is_staff:
+        user = request.user
+        connection = datetime.datetime.now()
+        print(user.email, user.id)
+        return render(request, 'web/dashboardProfessor.html',{'user': user, 'connection': connection.strftime('%X'), "students":studentList} )
+    else:
+        messages.info(request, 'Vous n\'est pas encore inscrit ', )
+        return redirect('home')
 
 def dashboardDirection(request):
 
@@ -46,6 +56,10 @@ def dashboardDirection(request):
 def JournalDeClasse(request):
     Stud = Student.objects.all()
     Pare = [p.name for p in Parent.objects.all()]
+    pare = requests.get('http://127.0.0.1:8000/apiparent/')
+
+
+
 
 
     printDate = datetime.datetime.now()
@@ -57,7 +71,9 @@ def JournalDeClasse(request):
     contextList = {
         'liststudent': studentJDC,
         'parent': Pare,
-        'student': Stud
+        'student': Stud,
+        'pare':pare.url,
+
     }
 
     return render(request, 'web/JournalDeClasse.html',contextList)
@@ -68,3 +84,10 @@ def LogOut_view(request):
 
 def homeSchool(request):
     return render(request, 'web/homeSchool.html')
+
+def contactUs(request):
+    return render(request, 'web/contactUs.html')
+
+def logindpp(request):
+
+    return render(request, 'web/logindpp.html')

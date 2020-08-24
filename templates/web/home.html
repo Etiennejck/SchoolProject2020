@@ -1,20 +1,136 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="row">
-        <div class="col s7 " id="actu" >
+    <div class="row" id="blur">
+        <div class="col s12 " id="actu" >
             <label class="collection-header"><h4>Actualités</h4></label>
-             <div class="collection">
-                <a href="#!" class="collection-item"><i class=" material-icons pulse">fiber_new </i> Actu1</a>
-                <a href="#!" class="collection-item">Actu2</a>
-                <a href="#!" class="collection-item">Actu3</a>
-                <a href="#!" class="collection-item">Actu4</a>
-                <a href="#!" class="collection-item">Actu5</a>
+             <div class="collection" style="font-family: 'Comic Sans MS'">
+                <a href="#!" class="collection-item"><i class=" material-icons pulse">fiber_new </i> UPDATE! Wegens de COVID-maatregelen en beperkingen die momenteel op school gelden zijn externen niet op school toegelaten. Hierdoor is een bezoek aan de school voor inschrijvingen voorlopig niet mogelijk. Gesprekken voor inschrijvingen gebeuren daardoor nu telefonisch en inschrijvingsdocumenten kunnen digitaal verstuurd worden zodat inschrijven toch mogelijk blijft.</a>
+                <a href="{% url 'contactUs' %}" class="collection-item">INSCRIPTIONS ANNÉE SCOLAIRE 2020-2021   contactformulier</a>
+                <a href="http://onderwijs.vlaanderen.be/bereken-de-instapdatum-voor-je-kleuter" class="collection-item">Berekening instapdatum kleuters</a>
+                <a href="https://www.vrijebasisschoolmariadal.be/index.php/inschrijven" class="collection-item">INSCRIPTIONS ANNÉE SCOLAIRE 2021-2022</a>
+                <a href="https://www.vrijebasisschoolmariadal.be/index.php/even-praktisch" class="collection-item">Even praktisch</a>
+                <a href="http://www.vrijebasisschoolmariadal.be/index.php/schoolteam" class="collection-item">Schoolteam</a>
              </div>
         </div>
 
-        <div class="col s5 hoverable" id="loginSection">
-            <div class="container">
+
+
+
+        <div class="row">
+        <div class="col s12" id="section">
+            <label><h4>Sections</h4></label>
+             <div class="col s6 ">
+                <div class="card horizontal">
+                  <div class="card-image">
+                    <img src="https://www.perinat-france.org/sites/default/files/crèche.jpg">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                        <h5>Hoe verloopt een klasdag?</h5>
+                        <p>KLASUREN:
+                        Start om 8.40 uur tot 11.50 uur.
+                        En van 12.50 uur tot 15.20 uur.
+                        OPGEPAST :Op woensdag eindigen de lessen om 11.55 uur.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="https://www.vrijebasisschoolmariadal.be/index.php/klasdag">meer infos</a>
+                    </div>
+                  </div>
+                </div>
+             </div>
+
+             <div class="col s6 ">
+                <div class="card horizontal">
+                  <div class="card-image">
+                    <img src="https://www.lesclefsdelecole.com/var/lesclefsdelecole/storage/images/primaire/methodologie-primaire/comment-produire-des-textes-au-cp/1213039-1-fre-FR/Comment-produire-des-textes-au-CP_w720h415.jpg">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                        <h5>Schooluren</h5>
+                        <p>De school is open van 08.15 tot 15.45 uur.</p>
+                        <br>
+                        <p>woensdag: voormiddag: 08.40 – 11.55 uur</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="http://www.vrijebasisschoolmariadal.be/documenten/schoolbroch.pdf">meer infos</a>
+                    </div>
+                  </div>
+                </div>
+             </div>
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col s12 hoverable" id="section" >
+            <label><h4>Agenda</h4></label>
+            <div class="collection">
+                <a class="collection-item">
+                    <div>
+                        <h6 class="col s12"> zomervakantie</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>Dinsdag 30 juni 2020</label>
+                        <i class="material-icons">location_on</i>
+                        <label>huis</label>
+                        <p>de zomervakantie start voor de kinderen om 11.50 uur</p>
+
+                    </div>
+                </a>
+
+                <a class="collection-item">
+                    <div>
+                        <h6 class="col s12">Begin van het schooljaar en hervatting van de lessen</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>donderdag 27 augustus 2020</label>
+                        <i class="material-icons">location_on</i>
+                        <label> Basisschool Mariadal
+Klein Overlaar 3 – 3320 Hoegaarden</label>
+                        <p>openklasmoment: 17.00 – 18.00 uur voor iedereen behalve
+voor de instappers van januari tot en met juni van K1 (deze worden uitgenodigd voor een
+infomoment op 5 januari 2021)</p>
+
+                    </div>
+                </a>
+
+                <a class="collection-item">
+                    <div>
+                        <h6 class="col s12">InformatieAvond</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>maandag 7 september 2020</label>
+                        <i class="material-icons">location_on</i>
+                        <label>Basisschool Mariadal</label>
+                        <p>19.00 uur: instapklas (instappers tot dec) en 1e kleuterklas (K1, K2 en K3)</p>
+                        <p> 19.00 uur: 3 e graad (5A, 5B, 6A en 6B)</p>
+                           <p> 20.30 uur: 2 e graad (3A, 3B, 4A en 4B)</p>
+
+                    </div>
+                </a>
+
+                 <a class="collection-item">
+                    <div>
+                        <h6 class="col s12">InformatieAvond</h6>
+                        <i class="material-icons">date_range</i>
+                        <label>dinsdag 8 september 2020</label>
+                        <i class="material-icons">location_on</i>
+                        <label>Basisschool Mariadal</label>
+                        <p> 18.30 uur: info schoolrijpheid voor K6 en K7 (in klas eerste leerjaar 1A)</p>
+                        <p> 19.00 uur: 2 e kleuterklas (K4 en K5)</p>
+                        <p> 19.30 uur: info klasorganisatie en -afspraken 3 e kleuterklas (K6 en K7)</p>
+                        <p>20.30 uur: 1 e graad (1A, 1B, 1C, 2A, 2B en 2C)</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="col s4" id="agenda" >
+
+        </div>
+    </div>
+    </div>
+
+    <div id="loginSection" >
+        <div class="container1" >
             <label><h4>Login</h4></label>
             <div class="row">
                 <form action="{% url 'home' %}" class="col s12" method="post">
@@ -30,109 +146,19 @@
                       <label for="password"></label>
                     </div>
                   </div>
-                    <button class="btn waves-effect waves-light right" style="background-color:#3a4ab1" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light right" onclick="toggle()" style="background-color:#3a4ab1" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                     </button>
                 </form>
                 {% if messages %}
-         <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-         {% endfor %}
-         </ul>
-    {% endif %}
+                     <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                         {% endfor %}
+                     </ul>
+                {% endif %}
             </div>
-                </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12" id="section">
-            <label><h4>Sections</h4></label>
-             <div class="col s6 ">
-                <div class="card horizontal">
-                  <div class="card-image">
-                    <img src="https://www.perinat-france.org/sites/default/files/crèche.jpg">
-                  </div>
-                  <div class="card-stacked">
-                    <div class="card-content">
-                      <p>I am a very simple card. I am good at containing small bits of information.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">plus d'infos</a>
-                    </div>
-                  </div>
-                </div>
-             </div>
-
-             <div class="col s6 ">
-                <div class="card horizontal">
-                  <div class="card-image">
-                    <img src="https://www.lesclefsdelecole.com/var/lesclefsdelecole/storage/images/primaire/methodologie-primaire/comment-produire-des-textes-au-cp/1213039-1-fre-FR/Comment-produire-des-textes-au-CP_w720h415.jpg">
-                  </div>
-                  <div class="card-stacked">
-                    <div class="card-content">
-                      <p>I am a very simple card. I am good at containing small bits of information.</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">plus d'infos</a>
-                    </div>
-                  </div>
-                </div>
-             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col s4 hoverable" id="section" >
-            <label><h4>Agenda</h4></label>
-            <div class="collection">
-                <a class="collection-item">
-                    <div>
-                        <h6 class="col s12">Titre event</h6>
-                        <i class="material-icons">date_range</i>
-                        <label>date event</label>
-                        <i class="material-icons">location_on</i>
-                        <label>place event</label>
-                        <p>Description event</p>
-
-                    </div>
-                </a>
-
-                <a class="collection-item">
-                    <div>
-                        <h6 class="col s12">Titre event</h6>
-                        <i class="material-icons">date_range</i>
-                        <label>date event</label>
-                        <i class="material-icons">location_on</i>
-                        <label>place event</label>
-                        <p>Description event</p>
-
-                    </div>
-                </a>
-
-                <a class="collection-item">
-                    <div>
-                        <h6 class="col s12">Titre event</h6>
-                        <i class="material-icons">date_range</i>
-                        <label>date event</label>
-                        <i class="material-icons">location_on</i>
-                        <label>place event</label>
-                        <p>Description event</p>
-
-                    </div>
-                </a>
-
-            </div>
-        </div>
-        <div class="col s4 center-align"  id="agenda" >
-            <label><h4>Suivez-nous</h4></label>
-            <a href="https://www.facebook.com/Mariadal-Hoegaarden-226120254089280/" ><img height="140px" width="140px" class="circle " src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Facebook_Home_logo_old.svg/600px-Facebook_Home_logo_old.svg.png"></a>
-            <a href="https://www.facebook.com/Mariadal-Hoegaarden-226120254089280/" ><img style="margin-top: 10px " height="159px" width="155px" class="circle " src="https://i.ya-webdesign.com/images/linkedin-icon-png-circle-2.png"></a>
-
-        </div>
-        <div class="col s4" id="agenda" >
-
         </div>
     </div>
 {% endblock %}
+

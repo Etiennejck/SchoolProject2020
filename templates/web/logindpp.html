@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Logindpp</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cardLogindpp.css' %}">
+</head>
+<body>
+
+    {% csrf_token %}
+    <div id="loginbox">
+                <div class="container">
+                    <div class="box">
+                        <h2 class="name">Direction</h2>
+                        <a href="{% url 'dashboardDirection' %}" class="buy">Connection</a>
+                        <div class="circle"></div>
+                        <img src="{% static 'images/59464aa11010448f3ae0519a.png' %}" alt="mail" class="product" >
+                    </div>
+                    <div class="box">
+                        <h2 class="name">Parents</h2>
+                        <a href="{% url 'dashboardParent' %}" class="buy">Connection</a>
+                        <div class="circle"></div>
+                        <img src="{% static 'images/59464ab11010448f3ae0519c.png' %}" alt="mail" class="product">
+                    </div>
+                    <div class="box">
+                        <h2 class="name">Professors</h2>
+                        <a href="{% url 'dashboardProfessor' %}" class="buy">Connection</a>
+                        <div class="circle"></div>
+                        <img src="{% static 'images/59464aba1010448f3ae0519d.png' %}" alt="mail" class="product" >
+                    </div>
+                </div>
+            </div>
+
+<script src="{% static 'js/vanilla-tilt.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+             VanillaTilt.init(document.querySelectorAll(".box"),
+                    {
+                        max: 25,
+                        speed: 400
+                    });
+        </script>
+
+</body>
+</html>

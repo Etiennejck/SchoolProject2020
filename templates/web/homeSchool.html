@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homePage.css' %}">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&display=swap');
@@ -328,7 +329,7 @@
 	width: 250px;
 	height: 250px;
 	border: 30px solid greenyellow;
-	animation: rotate 40s linear infinite, fadeIn 1s linear forwards;
+	animation: rotate 10s linear normal, fadeIn 1s linear forwards;
 	animation-delay: 7s;
 }
 .element2
@@ -340,7 +341,7 @@
 	width: 50px;
 	height: 50px;
 	border: 2px solid deeppink;
-	animation: rotate 30s linear infinite, fadeIn 1s linear forwards;
+	animation: rotate 20s linear infinite, fadeIn 1s linear forwards;
 	animation-delay: 7s;
 }
 @keyframes rotate
@@ -465,7 +466,7 @@
     </div>
     <section>
         <div class="header">
-				<h2 class="logo"><img style="width: 100px" src="{% static 'images/MArieadal Logo.png' %}"> </h2>
+				<h2 class="logo"><img style="width: 100px;" src="{% static 'images/MArieadal Logo.png' %}"> </h2>
             <i class="fa fa-bars x2" onclick="menuToggle()"></i>
             <ul id="navigation">
 					<li>
@@ -475,7 +476,7 @@
 						<a href="#">Section</a>
 					</li>
 					<li>
-						<a href="{% url 'dashboardProfessor' %}">Login</a>
+						<a href="{% url 'logindpp' %}">Login</a>
 					</li>
 					<li>
 						<a href="#">Our Work</a>
@@ -490,7 +491,7 @@
 						<a href="{% url 'dashboardDirection' %}">Direction</a>
 					</li>
                     <li>
-						<a href="#">API</a>
+						<a href="{% url 'contactUs' %}">préinscription</a>
 					</li>
                 <i class="fa fa-times x2" onclick="menuToggle()"></i>
 				</ul>
@@ -519,14 +520,35 @@
 			</ul>
 			<div class="element1"></div>
 			<div class="element2"></div>
+
+
+
+
+        <div class="container">
+            <div class="card">
+                <div class="imgBox">
+
+                </div>
+                <div class="details">
+                </div>
+            </div>
+        </div>
+
     </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-<script type="text/javascript">
-    function menuToggle(argument){
-        var element = document.getElementById("navigation");
-        element.classList.toggle("show");
-    }
-</script>
+    <!--form Contact Us-->
+        <script src="{% static 'js/vanilla-tilt.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            function menuToggle(argument){
+                var element = document.getElementById("navigation");
+                element.classList.toggle("show");
+            }
+             VanillaTilt.init(document.querySelectorAll(".box"),
+                    {
+                        max: 25,
+                        speed: 400
+                    });
+        </script>
 </body>
 </html>

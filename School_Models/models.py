@@ -89,6 +89,7 @@ class Employee(models.Model):
     id_grade = models.ForeignKey('Grade', on_delete=models.CASCADE)
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
 
+
 class Grade(models.Model):
     designation = models.CharField(max_length=50)
 
@@ -169,6 +170,7 @@ class Student(models.Model):
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
     id_level = models.ForeignKey('Level', on_delete=models.CASCADE)
     id_inscription = models.ForeignKey('Inscription', on_delete=models.CASCADE)
+
 
 
 class Parent(models.Model):

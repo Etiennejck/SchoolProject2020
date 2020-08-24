@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription request</title>
+    <link rel="stylesheet" href="{% static 'css/ContactUs.css' %}">
+</head>
+<body>
+    <section>
+    <div class="container">
+        <div class="contactinfo">
+            <div>
+                <h2>Mariadal info</h2>
+                <ul class="info">
+                    <li>
+                        <span><img src="{% static 'images/address.png' %}"></span>
+                        <span>Vrije basisschool Mariadal
+                            Klein Overlaar 3
+                            3320 Hoegaarden</span>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'images/mail-5.png' %}"></span>
+                        <span>VrijebasisschoolMariadal@gmail.com</span>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'images/phone2.png' %}"></span>
+                        <span>016 - 76 54 95</span>
+                    </li>
+
+                    <li class="checkbox ">
+                        <input id="checkbox_2_0" name="checkbox_2[]" type="checkbox" value="Ik ga akkoord met de privacydisclaimer" data-alias="" data-required="true">
+                        <label class="checkbox-inline" for="checkbox_2_0"> <a style="text-decoration: none; color: white; margin: 20px" href="https://www.it-pautum.com/privacy.html" target="_blank" rel="noopener" data-mce-fragment="1">Ik ga akkoord met de privacydisclaimer </a></label>
+                    </li>
+                    <li class="checkbox ">
+                        <input id="checkbox_2_0" name="checkbox_2[]" type="checkbox" value="Ik ga akkoord met de privacydisclaimer" data-alias="" data-required="true">
+                        <label class="checkbox-inline" for="checkbox_2_0"> <a style="text-decoration: none; color: white; margin: 20px" href="https://www.it-pautum.com/privacy.html" target="_blank" rel="noopener" data-mce-fragment="1">Ik ga akkoord met het schoolreglement en het pedagogisch project </a></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="contactForm">
+            <h2>Subscription request</h2>
+            <div class="formBox">
+                <div class="inputBox w50">
+                    <input type="text" name="" required>
+                    <span>Kids Last Name</span>
+                </div>
+                <div class="inputBox w50">
+                    <input type="text" name="" required>
+                    <span>Born date</span>
+                </div>
+                <div class="inputBox w50">
+                    <input type="text" name="" required>
+                    <span>First Name</span>
+                </div>
+                <div class="inputBox w50">
+                    <input type="text" name="" required>
+                    <span>Last Name</span>
+                </div>
+
+                <div class="inputBox w50">
+                    <input type="text" name="" required>
+                    <span>Email adress</span>
+                </div>
+                <div class="inputBox w50">
+                    <input type="text" name="" required>
+                    <span>Mobile number</span>
+                </div>
+                <div class="inputBox w100">
+                    <textarea name="" required></textarea>
+                    <span>Write your message here...</span>
+                </div>
+                <div class="inputBox w100">
+                    <input type="submit" name="" value="send">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

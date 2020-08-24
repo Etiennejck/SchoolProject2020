@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^dashboardDirection/', views.dashboardDirection, name='dashboardDirection'),
     url(r'^JournalDeClasse/', views.JournalDeClasse, name='JournalDeClasse'),
     url(r'^LogOut_view/', views.LogOut_view, name='LogOut_view'),
-    url(r'^login', views.login, name='login'),
     url(r'^homeSchool/', views.homeSchool, name='homeSchool'),
+    url(r'^contactUs/', views.contactUs, name='contactUs'),
+    url(r'^logindpp/', views.logindpp, name='logindpp')
 
     ]

@@ -1,0 +1,31 @@
+.collection a.collection-item{
+    color: #0D47A1;
+}
+
+.row#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+#loginSection{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.30);
+    background: white;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#loginSection.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 3;
+    transition: 0.5s;
+}
+

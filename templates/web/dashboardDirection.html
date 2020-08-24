@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -16,11 +17,12 @@
 {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to top, darkslategrey, forestgreen, greenyellow);
+    background-image: linear-gradient(to top, darkblue, dodgerblue, deepskyblue);
 }
 
 ul
 {
+    width: auto;
     position: absolute;
     top: 70%;
     left: 51%;
@@ -32,6 +34,7 @@ ul
 
 ul li
 {
+    width: auto;
     list-style: none;
 }
 
@@ -113,6 +116,7 @@ body{
 .clock{
     margin-top: 30px;
     width: 350px;
+    min-width: 100px;
     height: 350px;
     display: flex;
     justify-content: center;

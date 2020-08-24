@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homePage.css' %}">
     <!-- Compiled and minified JavaScript -->
     <script src="{% static 'css/materialize.css' %}"></script>
-
+    <script src="{% static 'js/vanilla-tilt.min.js' %}"></script>
 
 </head>
 
@@ -24,12 +25,11 @@
           <a href="#!" class="brand-logo" style="margin-left: 50px; margin-top: 5px"><img height="75" width="110" src="{% static 'images/MArieadal Logo.png' %}"></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down" style="margin-right: 50px">
-              <li><a href="{% url 'dashboardParent' %}">Parent</a></li>
-              <li><a href="{% url 'dashboardProfessor' %}">Professeur</a></li>
+              <li><a href="#" onclick="toggle()">Login</a></li>
             <li><a href="{% url 'home' %}">Accueil</a></li>
             <li><a href="{% url 'homeSchool' %}">HomeSchool</a></li>
-            <li><a href="collapsible.html">A propos</a></li>
-            <li><a href="mobile.html">Contact</a></li>
+            <li><a href="http://www.vrijebasisschoolmariadal.be/documenten/schoolbroch.pdf">A propos</a></li>
+            <li><a href="{% url 'contactUs' %}">Contact</a></li>
           </ul>
         </div>
     </nav>
@@ -47,13 +47,18 @@
     <label> Copyrights &#169; 2020 - réalisé par Etienne Jonckers PSR08623 </label>
 
 </footer>
-<script>
-    {#$(document).ready(function () {#}
-    {#    $.get('http://127.0.0.1:8000/parent/', function (data) {#}
-    {#        var d = JSON.stringify(data);#}
-    {#        alert(d);#}
-    {#    })#}
-    {#});#}
+<script type="text/javascript">
+    function toggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+            var loginSection = document.getElementById('loginSection');
+            loginSection.classList.toggle('active');
+        }
+        VanillaTilt.init(document.querySelectorAll(".box"),
+            {
+                max: 25,
+                speed: 400
+	        });
 </script>
 
 </html>
