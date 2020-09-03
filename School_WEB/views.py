@@ -39,10 +39,11 @@ def dashboardParent(request):
 
 
 def dashboardProfessor(request):
-
+    from School_API.views import viewsets
     if request.user.is_authenticated and request.user.is_staff:
         user = request.user
         connection = datetime.datetime.now()
+        studentList = views.getStudentList()
         print(user.email, user.id)
         return render(request, 'web/dashboardProfessor.html',{'user': user, 'connection': connection.strftime('%X'), "students":studentList} )
     else:
@@ -57,10 +58,6 @@ def JournalDeClasse(request):
     Stud = Student.objects.all()
     Pare = [p.name for p in Parent.objects.all()]
     pare = requests.get('http://127.0.0.1:8000/apiparent/')
-
-
-
-
 
     printDate = datetime.datetime.now()
     studentJDC = {

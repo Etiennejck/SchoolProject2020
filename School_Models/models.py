@@ -10,9 +10,7 @@ class SchoolPg(models.Model):
     cp = models.IntegerField()
     matricul = models.IntegerField()
     status = models.BooleanField()
-    id_event = models.ForeignKey('Event', on_delete=models.CASCADE)
-    id_meal = models.ForeignKey('Meal', on_delete=models.CASCADE)
-    id_rules = models.ForeignKey('Rules', on_delete=models.CASCADE)
+
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
@@ -21,12 +19,13 @@ class Event(models.Model):
     end_Date = models.DateField()
     status = models.BooleanField()
     contry = models.CharField(max_length=100)
+    id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE, null=True)#Attention
 
 class Meal(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     id_menu = models.ForeignKey('Menu', on_delete=models.CASCADE)
-    id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
+
 
 
 class Menu(models.Model):
@@ -44,6 +43,7 @@ class Rules(models.Model):
     name = models.CharField(max_length=100)
     years = models.IntegerField()
     text = models.TextField()
+    id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE, null=True)#Attention
 
 class School_year(models.Model):
     libel = models.CharField(max_length=50)
@@ -53,6 +53,7 @@ class School_year(models.Model):
 class Inscription(models.Model):
     date_inscription = models.DateField(auto_now=True)
     id_School_year = models.ForeignKey('School_year', on_delete=models.CASCADE)
+    id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE, null=True)#Attention changer null
 
 class School_Section(models.Model):
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
@@ -70,6 +71,7 @@ class Room(models.Model):
     id_room_type = models.ForeignKey('Room_Type', on_delete=models.CASCADE)
 
 class Room_Type(models.Model):
+    name = models.CharField(max_length=50, null=True)#Attention
     dateNow = models.DateField()
 
 class Class_room_Student(models.Model):

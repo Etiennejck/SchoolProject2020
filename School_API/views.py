@@ -120,10 +120,10 @@ def index(request):
     return render(request, "base.html")
 
 # def updateJdc(user, message):
-# #     Student.objects.filter(parents_id__mail=user.email).update(class_journal=message)
+#     Student.objects.filter(parents_id__mail=user.email).update(class_journal=message)
 
-# def getStudentList(classId=None):
-#     if classId:#filtrage des étudiants par id
-#         return ["Eliott", "Eleonor", "Emile", "Aubane"]
-#     else:
-#         return ["Eliott", "Eleonor", "Emile", "Aubane", "Ferra", "Lucie", "Charles", "Basile", "Nathan"]
+def getStudentList(classId=None):
+     if classId:#filtrage des étudiants par id
+         return ["Eliott", "Eleonor", "Emile", "Aubane"]
+     else:
+         return ["Eliott", "Eleonor", "Emile", "Aubane", "Ferra", "Lucie", "Charles", "Basile", "Nathan"]
