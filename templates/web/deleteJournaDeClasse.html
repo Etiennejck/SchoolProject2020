@@ -1,0 +1,11 @@
+{% load static %}
+<div class="container">
+    <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+            <h1 class="w3-center">Are you sure to deleted this class Diary ?</h1>
+            <input class="btn btn-danger" type="submit" value="Yes">
+        </form>
+        <button class="w3-button w3-ripple w3-red"><a href="{% url 'JournalDeClasse' %}">Cancel</a></button>
+    </div>
+</div>

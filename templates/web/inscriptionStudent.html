@@ -1,0 +1,16 @@
+
+{% load static %}
+{% block content %}
+ <div class="w3-panel w3-blue w3-card-4 w3-round-xlarge w3-center">
+  <h2>formulaire Student</h2>
+</div>
+
+<form method="post" class="">
+    {% csrf_token %}
+    <label>Name</label>
+<input class="w3-input" type="text" value="{{ comeIn }}" placeholder="{{ comeIn }}">
+    <p>{{ form.as_p }}</p>
+     <p>{{ comeIn }}</p>
+  <button class="w3-btn w3-blue-grey">Register</button>
+</form>
+{% endblock %}

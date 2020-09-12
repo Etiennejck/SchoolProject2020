@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from django.urls import path
+
 from School_WEB import views
 
 urlpatterns = [
@@ -11,6 +11,10 @@ urlpatterns = [
     url(r'^LogOut_view/', views.LogOut_view, name='LogOut_view'),
     url(r'^homeSchool/', views.homeSchool, name='homeSchool'),
     url(r'^contactUs/', views.contactUs, name='contactUs'),
-    url(r'^logindpp/', views.logindpp, name='logindpp')
-
+    url(r'^logindpp/', views.logindpp, name='logindpp'),
+    url(r'^detailJournalDeClasse/(\d+)/', views.detailJournalDeClasse, name='detailJournalDeClasse'),
+    url(r'^updateJournaDeClasse/(\d+)/', views.updateJournaDeClasse, name='updateJournaDeClasse'),
+    url(r'^deleteJournaDeClasse/(\d+)/', views.deleteJournaDeClasse, name='deleteJournaDeClasse'),
+    url(r'inscriptionParent/', views.inscriptionParent, name='inscriptionParent'),
+    url(r'inscriptionStudent/', views.inscriptionStudent, name='inscriptionStudent'),
     ]

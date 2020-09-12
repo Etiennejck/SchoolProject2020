@@ -13,11 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.contrib import admin
-from django.urls import path, include
+from include import path
 from rest_framework import routers
 from School_API import views
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -53,9 +55,9 @@ router.register(r'absence', views.AbsenceViewSet)
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'admin/', admin.site.urls),
     url(r'^', include('School_WEB.urls')),
-    path('api', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'api', include(router.urls)),
+    url(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

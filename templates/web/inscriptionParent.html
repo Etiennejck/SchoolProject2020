@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <div class="w3-panel w3-blue w3-card-4 w3-round-xlarge w3-center">
+  <h2>formulaire Parents</h2>
+</div>
+
+<form method="post" class="w3-container">
+    {% csrf_token %}
+    <p>{{ form.as_p }}</p>
+    <label>Password</label>
+    <input name="pass" class="w3-input" type="text">
+  <button class="w3-btn w3-blue-grey">Register</button>
+</form>
+{% endblock %}

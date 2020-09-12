@@ -29,8 +29,8 @@ section::before
 section .container
 {
     position: relative;
-    min-width: 1100px;
-    min-height: 550px;
+    min-width: 70rem;
+    min-height: 40rem;
     display: flex;
     z-index: 1000;
 }
@@ -211,4 +211,8 @@ section .container .contactForm .formBox .inputBox input[type='submit']
 section .container .contactForm .formBox .inputBox input[type='submit']:hover
 {
     background: #ff568c;
+}
+.formulaire
+{
+    flex-wrap: wrap;
 }

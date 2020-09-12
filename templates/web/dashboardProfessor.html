@@ -8,18 +8,19 @@
         <link rel="stylesheet" href="{% static 'css/MenuDashboardProf.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
+
 {% if user.is_authenticated %}
         <!--wrapper start-->
         <div class="wrapper">
             <!--header menu start-->
             <div class="header">
                 <div class="header-menu">
-                    <div class="title">Mariadal <span>{{ user.first_name }}</span></div>
+                    <div class="title">Mariadal</div>
                     <div class="sidebar-btn">
-                        <i class="fas fa-bars" style="margin: 20px"> </i>
-
+                        <i class="fas fa-bars" > </i>
                     </div>
                     <ul>
                         <li><a href="#"><i class="fas fa-search"></i></a></li>
@@ -47,7 +48,6 @@
                         </a>
                         <div class="sub-menu">
                             <a href="#"><i class="fas fa-book"></i><span id="JDC">consulter</span></a>
-                            <a href="#"><i class="fas fa-wrench"></i><span>modifier</span></a>
                         </div>
                     </li>
                     <li class="item" id="messages">
@@ -90,15 +90,26 @@
                 </div>
             </div>
             <!--sidebar end-->
+
             <!--main container start-->
             <div class="main-container">
                 <div class="card" id="ajaxload">
-                    <h2>{{ user.groups.get }}</h2><br>
+                <form method="post" action="dashboardProfessor.html">
+                {% csrf_token %}
+                    <h2>{{ user.groups.get }} {{ user.first_name }} {{ connection }} </h2><br>
                     {% for std in students %}
-                        <ul>
-                            <li>{{ std }} <label><input type="checkbox"></label></li>
-                        </ul>
+                        {% if std.presence %}
+                            <ul style="width: 90%">
+                                <li>{{ std.first_name }} {{ std.name }} {{ std.presence }}<label><input id="presence"  type="checkbox" checked value="{{ std.id }}"></label></li>
+                            </ul>
+
+                        {% else %}
+                            <ul style="width: 90%">
+                            <li>{{ std.first_name }} {{ std.name }} <label><input id="presence"  type="checkbox"  value="{{ std.id }}"></label></li>
+                            </ul>
+                        {% endif %}
                     {% endfor %}
+                </form>
                 </div>
 
             </div>
@@ -106,23 +117,35 @@
         </div>
         <!--wrapper end-->
 {% endif %}
+
         <script type="text/javascript">
         $(document).ready(function(){
             $(".sidebar-btn").click(function(){
                 $(".wrapper").toggleClass("collapse");
             });
-            $(".item").click(function(){
-                $(".sub-menu").toggle();
-            });
+
             $('#JDC').click(function () {
-        $.ajax({
-            url: "{% url 'JournalDeClasse' %}",
-            success: function (result) {
-                $('.main-container').html(result).css("background-color", "#4CCEE8");
-                }
+            $.ajax({
+                url: "{% url 'JournalDeClasse' %}",
+                success: function (result) {
+                    $('.main-container').html(result);
+                    }
+                });
+            });
+
+            $('input:checkbox').on("change", function (){
+                var present = $('#presence').val();
+                $.post("{% url 'dashboardProfessor' %}",
+                   {
+                       present: present,
+                       csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
+                   },
+                   function (data, status){
+                        alert(present);
+                   });
             });
         });
-        });
+
         </script>
 
     </body>

@@ -1,13 +1,152 @@
 
 {% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Journal de classe</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+        }
+        button{
+            text-decoration: none;
+            background-color: #00b0ff;
+        }
+        #carte{
+            background-color: white;
+        }
+        #scrollpath{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10%;
+            height: 100%;
+            background: rgba(255,255,255,0.05) ;
 
-<div class="container-fluid">
-    <div class="main-container">
-        <h1>{{ parent }}</h1>
-        <p>{{ liststudent }}</p>
-        <p>{{ student }}</p>
-        <p>{{ pare }}</p>
-        <p>{{ donnee }}</p>
+        }
+        #progressbar{
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            background: linear-gradient(to top, #008aff,#00ffe7);
+            animation: animate 5s linear infinite;
+        }
+        #progressbar:before,
+        #progressbar:after
+        {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #008aff,#00ffe7);
+            filter: blur(10px);
+        }
+        #progressbar:after{
+           filter: blur(30px);
+        }
+        @keyframes animate {
+            0%,100%{
+                filter: hue-rotate(0deg);
+            }
+            50%{
+                filter: hue-rotate(360deg);
+            }
+        }
+        ::-webkit-scrollbar{
+            width: 0;
+        }
+        #pourcent{
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%) rotateX(180deg) rotateY(180deg);
+            right: 15px;
+            color: #fff;
+            font-size: 2em;
+            writing-mode: vertical-rl;
+            text-orientation: sideways;
+        }
 
+    </style>
+    <body>
+    <div id="progressbar"></div>
+    <div id="scrollpath"></div>
+    <div id="pourcent"></div>
+    <section>
+        {% for jdcSt in JdcStud %}
+              <div id="carte" class="w3-card-4 w3-margin w3-round-xlarge w3-center" style="width:50%">
+                <header class="w3-container w3-blue ">
+                  <h2>{{ jdcSt.id_classdiary.id_student.first_name }} </h2><p>{{ jdcSt.date }}</p>
+                </header>
+                <div class="w3-container ">
+                  <h4>Devoir</h4>
+                  <hr>
+                  <img src="{% static 'images/59464ab11010448f3ae0519c.png' %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                  <p>{{ jdcSt.home_work }}</p><br>
+                </div>
+                  <hr>
+                <div class="w3-container">
+                  <h4>Comportement</h4>
+                  <hr>
+                  <img src="{% static 'images/59464aba1010448f3ae0519d.png' %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                  <p>{{ jdcSt.comportement }}</p><br>
+                </div>
+                <button class="w3-button w3-blue"><a href="{% url 'detailJournalDeClasse' jdcSt.id %}">Details</a></button>
+                <button class="w3-button w3-blue"><a href="{% url 'updateJournaDeClasse' jdcSt.id %}">Update</a></button>
+                <button class="w3-button w3-red"><a href="{% url 'deleteJournaDeClasse' jdcSt.id %}">Delete</a></button>
+              </div>
+        {% endfor %}
+    </section>
+                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-block w3-green">Nouveau</button>
+
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container ">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2></h2>
+      </header>
+      <div class="w3-container">
+        <form method="POST" action="{% url 'JournalDeClasse' %}">
+            {% csrf_token %}
+            <p>{{ form.as_p }}</p>
+            <input type="submit" value="Valider">
+        </form>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
     </div>
-</div>
+  </div>
+
+    <script type="text/javascript">
+
+       var progressbar = document.getElementById("progressbar");
+       var percent = document.getElementById("pourcent");
+       var totalHeight = document.body.scrollHeight - window.innerHeight;
+       window.onscroll = function (){
+           var progress = (window.pageYOffset / totalHeight) * 100;
+           progressbar.style.height = progress + "%";
+           percent.innerHTML = "Page Scrolled " + Math.round(progress) + "%";
+       }
+
+    </script>
+
+</body>
+</html>

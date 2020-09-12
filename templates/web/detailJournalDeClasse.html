@@ -1,0 +1,10 @@
+<div class="main">
+    {{ data.id_classdiary.id_student.first_name }}
+    {{ data.comportement }}
+    {{ data.home_work }}
+    {% for a in allJDC %}
+        <ul>
+            <li>{{ a.comportement }}</li>
+        </ul>
+    {% endfor %}
+</div>

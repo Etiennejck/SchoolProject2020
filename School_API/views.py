@@ -124,6 +124,19 @@ def index(request):
 
 def getStudentList(classId=None):
      if classId:#filtrage des étudiants par id
-         return ["Eliott", "Eleonor", "Emile", "Aubane"]
+         return Student.objects.get(id=classId)
      else:
-         return ["Eliott", "Eleonor", "Emile", "Aubane", "Ferra", "Lucie", "Charles", "Basile", "Nathan"]
+         return Student.objects.all()
+
+
+def getJDCList(jdcId=None):
+    if jdcId:
+        return ClassDiary.objects.get(id=jdcId)
+    else:
+        return ClassDiaryViewSet.queryset.all()
+
+def getCommunication(studId=None):
+    if studId:
+        return Communication.objects.get(id=studId)
+    else:
+        return Communication.objects.all()

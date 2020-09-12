@@ -10,7 +10,8 @@ class SchoolPg(models.Model):
     cp = models.IntegerField()
     matricul = models.IntegerField()
     status = models.BooleanField()
-
+    def __str__(self):
+        return "{}".format(self.name)
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
@@ -54,6 +55,8 @@ class Inscription(models.Model):
     date_inscription = models.DateField(auto_now=True)
     id_School_year = models.ForeignKey('School_year', on_delete=models.CASCADE)
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE, null=True)#Attention changer null
+    def __str__(self):
+        return str(self.id_School_year.start_date)
 
 class School_Section(models.Model):
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
@@ -90,10 +93,14 @@ class Employee(models.Model):
     actif = models.BooleanField(default=True)
     id_grade = models.ForeignKey('Grade', on_delete=models.CASCADE)
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
+    def __str__(self):
+        return '{} {}'.format(self.name, self.id_grade.designation)
 
 
 class Grade(models.Model):
     designation = models.CharField(max_length=50)
+    def __str__(self):
+        return self.designation
 
 class Leave(models.Model):
     intituled = models.CharField(max_length=150)
@@ -105,6 +112,8 @@ class Leave(models.Model):
 
 class Leave_Categorie(models.Model):
     title = models.CharField(max_length=150)
+    def __str__(self):
+        return self.title
 
 
 class Professor_Report(models.Model):
@@ -131,13 +140,17 @@ class ClassDiary(models.Model):
     id_student = models.ForeignKey('Student', on_delete=models.CASCADE)
     id_level = models.ForeignKey('Level', on_delete=models.CASCADE)
     id_Schoolyear = models.ForeignKey('School_year', on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.id_student)
+
 
 class Level(models.Model):
     level = models.IntegerField()
     id_School_year = models.ForeignKey('School_year', on_delete=models.CASCADE)
     id_inscription = models.ForeignKey('Inscription', on_delete=models.CASCADE)
-    id_classdiary = models.ForeignKey('ClassDiary', on_delete=models.CASCADE)
     id_section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.level)
 
 class Report(models.Model):
     trimestrial = models.IntegerField()
@@ -173,6 +186,8 @@ class Student(models.Model):
     id_level = models.ForeignKey('Level', on_delete=models.CASCADE)
     id_inscription = models.ForeignKey('Inscription', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "{} {}".format(self.name, self.first_name)
 
 
 class Parent(models.Model):
@@ -187,6 +202,8 @@ class Parent(models.Model):
     Telephone = PhoneNumberField(null=True, region='BE')
     dateInscription = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return "{} {}".format(self.name, self.first_name)
 
 class Parent_Student(models.Model):
     id_parent = models.ForeignKey('Parent', on_delete=models.CASCADE)
