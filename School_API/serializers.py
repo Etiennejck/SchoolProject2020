@@ -140,3 +140,8 @@ class AbsenceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Absence
         fields = '__all__'
+
+class MessageSendSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = models.MessageSend
+        fields = '__all__'

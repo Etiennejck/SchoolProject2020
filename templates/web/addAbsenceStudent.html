@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<title>addAbsenceStudent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <body>
+        <div class="w3-card-6">
+            <form method="post" action="{% url 'addAbsenceStudent' %}" class="w3-container" >
+                {% csrf_token %}
+                <h2>Carte d'absence</h2>
+                <p>{{ form.as_p }}</p>
+                <input class="w3-button w3-blue" type="submit" value="Envoyer">
+            </form>
+        </div>
+    </body>
+</html>

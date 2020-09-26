@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -20,7 +21,10 @@ class Event(models.Model):
     end_Date = models.DateField()
     status = models.BooleanField()
     contry = models.CharField(max_length=100)
+    Eventmessage = models.TextField(null=True)
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE, null=True)#Attention
+    def __str__(self):
+        return "{}, période: {} ".format(self.name, self.periode)
 
 class Meal(models.Model):
     start_date = models.DateField()
@@ -93,8 +97,9 @@ class Employee(models.Model):
     actif = models.BooleanField(default=True)
     id_grade = models.ForeignKey('Grade', on_delete=models.CASCADE)
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
+    id_section = models.ForeignKey('Section', on_delete=models.CASCADE, null=True)
     def __str__(self):
-        return '{} {}'.format(self.name, self.id_grade.designation)
+        return '{}, {} {}'.format(self.name, self.firstname, self.id_section)
 
 
 class Grade(models.Model):
@@ -125,16 +130,27 @@ class Professor_Report(models.Model):
 class Professor_Course(models.Model):
     id_professor = models.ForeignKey('Employee', on_delete=models.CASCADE)
     id_course = models.ForeignKey('Course', on_delete=models.CASCADE)
+    def __str__(self):
+        return "{} {}".format(self.id_professor.name, self.id_course.name)
 
 
 #Diary
 
+class MessageSend(models.Model):
+    id_parent = models.ForeignKey('Parent', on_delete=models.CASCADE)
+    id_professor = models.ForeignKey('Employee', on_delete=models.CASCADE)
+    messagesBody = models.TextField()
+    msg_time = models.DateTimeField(auto_now=True)
+
 class Communication(models.Model):
     id_employee = models.ForeignKey('Employee', on_delete=models.CASCADE)
-    id_classdiary = models.ForeignKey('ClassDiary', on_delete=models.CASCADE)
+    id_classdiary = models.ForeignKey('ClassDiary', on_delete=models.CASCADE, verbose_name="Journal de classe de ")
     comportement = models.TextField()
     home_work = models.TextField()
+    communication = models.TextField(null=True)
     date = models.DateField(auto_now=True)
+    def __str__(self):
+        return "{} Devoirs: {}, Notes de comportements: {}".format(self.id_classdiary.id_student.name, self.home_work, self.comportement)
 
 class ClassDiary(models.Model):
     id_student = models.ForeignKey('Student', on_delete=models.CASCADE)
@@ -150,7 +166,7 @@ class Level(models.Model):
     id_inscription = models.ForeignKey('Inscription', on_delete=models.CASCADE)
     id_section = models.ForeignKey('Section', on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.level)
+        return "{} {}".format(self.level, self.id_section.name)
 
 class Report(models.Model):
     trimestrial = models.IntegerField()
@@ -162,10 +178,15 @@ class Section(models.Model):
     name = models.CharField(max_length=50)
     section_year = models.IntegerField()
     trimestrial = models.IntegerField()
+    def __str__(self):
+        return "{} {}".format(self.name, self.section_year)
 
 class Course(models.Model):
     name = models.CharField(max_length=150)
     ponderation = models.DecimalField(max_digits=5, decimal_places=2)
+    id_section = models.ForeignKey('Section', on_delete=models.CASCADE, null=True)
+    def __str__(self):
+        return self.name
 
 #Student_Models
 
@@ -181,13 +202,14 @@ class Student(models.Model):
     agreement_image = models.BooleanField(default=False)
     educational_agreement = models.BooleanField(default=False)
     presence = models.BooleanField(default=False)
+    image = models.ImageField(null=True)
     id_parent = models.ForeignKey('Parent', on_delete=models.CASCADE)
     id_School = models.ForeignKey('SchoolPg', on_delete=models.CASCADE)
     id_level = models.ForeignKey('Level', on_delete=models.CASCADE)
     id_inscription = models.ForeignKey('Inscription', on_delete=models.CASCADE)
 
     def __str__(self):
-        return "{} {}".format(self.name, self.first_name)
+        return "{} {} {}".format(self.name, self.first_name, self.id_parent.email)
 
 
 class Parent(models.Model):
@@ -203,7 +225,7 @@ class Parent(models.Model):
     dateInscription = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return "{} {}".format(self.name, self.first_name)
+        return "{} {} {}".format(self.name, self.first_name, self.email)
 
 class Parent_Student(models.Model):
     id_parent = models.ForeignKey('Parent', on_delete=models.CASCADE)
@@ -212,12 +234,17 @@ class Parent_Student(models.Model):
 
 class Family_Tie(models.Model):
     Designation = models.CharField(max_length=150)
+    def __str__(self):
+        return self.Designation
 
 class Absence(models.Model):
     document = models.FileField()
     start_date = models.DateField()
     end_date = models.DateField()
+    messageAbs = models.TextField(null=True)
     id_student = models.ForeignKey('Student', on_delete=models.CASCADE)
+    def __str__(self):
+        return self.id_student.name
 
 
 

@@ -115,6 +115,10 @@ class AbsenceViewSet(viewsets.ModelViewSet):
     queryset = Absence.objects.all()
     serializer_class = AbsenceSerializer
 
+class MessageSendViewSet(viewsets.ModelViewSet):
+    queryset = MessageSend.objects.all()
+    serializer_class = MessageSendSerializer
+
 
 def index(request):
     return render(request, "base.html")
@@ -128,6 +132,14 @@ def getStudentList(classId=None):
      else:
          return Student.objects.all()
 
+def getChildren(parentEmail):
+    return Student.objects.filter(id_parent_id=parentEmail)
+
+def getStudentById(id):
+    return Student.objects.get(id=id)
+
+def setStudentAttendee(id):
+    Student.objects.filter(pk=id).update(presence=not Student.objects.get(pk=id).presence)
 
 def getJDCList(jdcId=None):
     if jdcId:
@@ -140,3 +152,41 @@ def getCommunication(studId=None):
         return Communication.objects.get(id=studId)
     else:
         return Communication.objects.all()
+
+def getAbsence(AbsencestudId=None):
+    if AbsencestudId:
+        return Absence.objects.get(id=AbsencestudId)
+    else:
+        return Absence.objects.all()
+
+
+def getParentList(classId=None):
+    if classId:  # filtrage des étudiants par id
+        return Parent.objects.get(id=classId)
+    else:
+        return Parent.objects.all()
+
+def getProfessor(classId=None):
+    if classId:  # filtrage des étudiants par id
+        return Employee.objects.get(id=classId)
+    else:
+        return Employee.objects.all()
+
+
+def getEvents(classId=None):
+    if classId:  # filtrage des étudiants par id
+        return Event.objects.get(id=classId)
+    else:
+        return Event.objects.all()
+
+def getMessageSend(MessageSendId=None):
+    if MessageSendId:  # filtrage des étudiants par id
+        return MessageSend.objects.get(id=MessageSendId)
+    else:
+        return MessageSend.objects.all()
+
+def getMenu(MenuId=None):
+    if MenuId:  # filtrage des étudiants par id
+        return Menu.objects.get(id=MenuId)
+    else:
+        return Menu.objects.all()

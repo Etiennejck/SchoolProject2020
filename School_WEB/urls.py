@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from School_WEB import views
 
 urlpatterns = [
@@ -17,4 +16,8 @@ urlpatterns = [
     url(r'^deleteJournaDeClasse/(\d+)/', views.deleteJournaDeClasse, name='deleteJournaDeClasse'),
     url(r'inscriptionParent/', views.inscriptionParent, name='inscriptionParent'),
     url(r'inscriptionStudent/', views.inscriptionStudent, name='inscriptionStudent'),
+    url(r'DetailsAbsenceStudent/', views.DetailsAbsenceStudent, name='DetailsAbsenceStudent'),
+    url(r'addAbsenceStudent/', views.addAbsenceStudent, name='addAbsenceStudent'),
+    url(r'chat/(\d+)/', views.messagesend, name='chat'),
+    url(r'communication/',views.communication, name='communication')
     ]

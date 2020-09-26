@@ -1,11 +1,153 @@
 {% load static %}
-<div class="container">
-    <div class="container-fluid">
-        <form method="post">
-            {% csrf_token %}
-            <h1 class="w3-center">Are you sure to deleted this class Diary ?</h1>
-            <input class="btn btn-danger" type="submit" value="Yes">
-        </form>
-        <button class="w3-button w3-ripple w3-red"><a href="{% url 'JournalDeClasse' %}">Cancel</a></button>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="UTF-8">
+
+		<title>Flipside</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="viewport" content="width=460, user-scalable=no" />
+
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+		<link href="{% static 'css/flipside.css' %}" rel="stylesheet"  />
+
+	</head>
+
+	<body>
+    <form method="post">
+        {% csrf_token %}
+		<div class="btn">
+			<div class="btn-back">
+				<p>Are you sure you want to do that?</p>
+				<button class="yes" type="submit">Yes</button>
+				<button class="no"><a href="{% url 'JournalDeClasse' %}">No</a></button>
+			</div>
+			<div class="btn-front">Delete</div>
+		</div>
+     </form>
+
+		<style type="text/css" media="screen">
+			.project-title {
+				position: absolute;
+				left: 25px;
+				bottom: 8px;
+
+				font-size: 16px;
+				color: #444;
+			}
+
+			.credits {
+				position: absolute;
+				right: 20px;
+				bottom: 25px;
+				font-size: 15px;
+				z-index: 20;
+				color: #444;
+				vertical-align: middle;
+			}
+
+			.credits * + * {
+				margin-left: 15px;
+			}
+
+			.credits a {
+				padding: 8px 10px;
+				color: #444;
+				border: 2px solid #999;
+				text-decoration: none;
+			}
+
+			.credits a:hover {
+				border-color: #555;
+				color: #222;
+			}
+
+			@media screen and (max-width: 1040px) {
+				.project-title {
+					display: none;
+				}
+
+				.credits {
+					width: 100%;
+					left: 0;
+					right: auto;
+					bottom: 0;
+					padding: 30px 0;
+					background: #ddd;
+					text-align: center;
+				}
+
+				.credits a {
+					display: inline-block;
+					margin-top: 7px;
+					margin-bottom: 7px;
+				}
+			}
+		</style>
+
+		<script>
+			var _gaq = [['_setAccount', 'UA-15240703-1'], ['_trackPageview']];
+			(function(d, t) {
+			var g = d.createElement(t),
+			    s = d.getElementsByTagName(t)[0];
+			g.async = true;
+			g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g, s);
+			})(document, 'script');
+
+
+			window.onload = function() {
+
+	var btn = document.querySelector( '.btn' );
+
+	var btnFront = btn.querySelector( '.btn-front' ),
+		btnYes = btn.querySelector( '.btn-back .yes' ),
+		btnNo = btn.querySelector( '.btn-back .no' );
+
+	btnFront.addEventListener( 'click', function( event ) {
+		var mx = event.clientX - btn.offsetLeft,
+			my = event.clientY - btn.offsetTop;
+
+		var w = btn.offsetWidth,
+			h = btn.offsetHeight;
+
+		var directions = [
+			{ id: 'top', x: w/2, y: 0 },
+			{ id: 'right', x: w, y: h/2 },
+			{ id: 'bottom', x: w/2, y: h },
+			{ id: 'left', x: 0, y: h/2 }
+		];
+
+		directions.sort( function( a, b ) {
+			return distance( mx, my, a.x, a.y ) - distance( mx, my, b.x, b.y );
+		} );
+
+		btn.setAttribute( 'data-direction', directions.shift().id );
+		btn.classList.add( 'is-open' );
+	} );
+
+	btnYes.addEventListener( 'click', function( event ) {
+		btn.classList.remove( 'is-open' );
+	} );
+
+	btnNo.addEventListener( 'click', function( event ) {
+		btn.classList.remove( 'is-open' );
+	} );
+
+	function distance( x1, y1, x2, y2 ) {
+		var dx = x1-x2;
+		var dy = y1-y2;
+		return Math.sqrt( dx*dx + dy*dy );
+	}
+
+};
+		</script>
+
+	</body>
+
+</html>
