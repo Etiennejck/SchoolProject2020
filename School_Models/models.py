@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.safestring import mark_safe
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class SchoolPg(models.Model):
@@ -92,7 +91,7 @@ class Employee(models.Model):
     firstname = models.CharField(max_length=50)
     birthday = models.DateField()
     mail = models.EmailField()
-    phone_number = PhoneNumberField(null=True, region='BE')
+    phone_number = models.CharField(max_length=128, null=True)
     dateInscription = models.DateField()
     actif = models.BooleanField(default=True)
     id_grade = models.ForeignKey('Grade', on_delete=models.CASCADE)
@@ -221,7 +220,7 @@ class Parent(models.Model):
     ZIP_code = models.IntegerField()
     city = models.CharField(max_length=80)
     email = models.EmailField()
-    Telephone = PhoneNumberField(null=True, region='BE')
+    Telephone = models.CharField(max_length=128, null=True)
     dateInscription = models.DateField(auto_now_add=True)
 
     def __str__(self):

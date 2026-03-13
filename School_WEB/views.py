@@ -6,11 +6,11 @@ from django.views.decorators.csrf import csrf_protect
 from School_Models.models import Student, Parent,Employee, Communication, Section
 from django.contrib import messages
 from requests.auth import HTTPBasicAuth
-from School_WEB import chat
+
 import requests, json
 from School_API import views
 from .forms import CommunicationForm, InscriptionParentForm, InscriptionStudentForm, AbsenceForm, addAbsenceForm, MessageSendForm
-from School_WEB.chat import *
+
 
 def inscriptionParent(request):
     context = {}

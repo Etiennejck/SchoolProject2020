@@ -1,2 +1,11 @@
 # Project exclude paths
 /venv/
+
+# Python cache artifacts
+__pycache__/
+*.py[cod]
+
+# Local IDE artifacts
+.idea/deployment.xml
+.idea/webServers.xml
+.idea/libraries/
