@@ -1,147 +1,127 @@
+"""Serializers used by the School_API app."""
+
 from rest_framework import serializers
 from School_Models import models
 
-class SchoolSerializer(serializers.HyperlinkedModelSerializer):
+
+class BaseSerializer(serializers.HyperlinkedModelSerializer):
+    """Base serializer configuring common behaviour."""
+
     class Meta:
+        fields = "__all__"
+
+class SchoolSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.SchoolPg
-        fields = '__all__'
 
-class EventSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class EventSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Event
-        fields = '__all__'
 
-class MealSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class MealSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Meal
-        fields = '__all__'
 
-class MenuSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class MenuSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Menu
-        fields = '__all__'
 
-class RulesSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class RulesSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Rules
-        fields = '__all__'
 
-class School_yearSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class School_yearSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.School_year
-        fields = '__all__'
 
-class InscriptionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class InscriptionSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Inscription
-        fields = '__all__'
 
-class School_SectionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class School_SectionSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.School_Section
-        fields = '__all__'
 
-class RoomSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class RoomSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Room
-        fields = '__all__'
 
-class Room_TypeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Room_TypeSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Room_Type
-        fields = '__all__'
 
-class Class_room_StudentSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Class_room_StudentSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Class_room_Student
-        fields = '__all__'
 
-class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class EmployeeSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Employee
-        fields = '__all__'
 
-class GradeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class GradeSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Grade
-        fields = '__all__'
 
-class LeaveSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class LeaveSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Leave
-        fields = '__all__'
 
-class Leave_CategorieSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Leave_CategorieSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Leave_Categorie
-        fields = '__all__'
 
-class Professor_ReportSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Professor_ReportSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Professor_Report
-        fields = '__all__'
 
-class Professor_CourseSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Professor_CourseSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Professor_Course
-        fields = '__all__'
 
-class CommunicationSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class CommunicationSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Communication
-        fields = '__all__'
 
-class ClassDiarySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class ClassDiarySerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.ClassDiary
-        fields = '__all__'
 
-class LevelSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class LevelSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Level
-        fields = '__all__'
 
-class ReportSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class ReportSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Report
-        fields = '__all__'
 
-class SectionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class SectionSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Section
-        fields = '__all__'
 
-class CourseSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class CourseSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Course
-        fields = '__all__'
 
-class StudentSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class StudentSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Student
-        fields = '__all__'
 
-class ParentSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class ParentSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Parent
-        fields = '__all__'
 
-class Parent_StudentSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Parent_StudentSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Parent_Student
-        fields = '__all__'
 
-class Family_TieSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class Family_TieSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Family_Tie
-        fields = '__all__'
 
-class AbsenceSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class AbsenceSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.Absence
-        fields = '__all__'
 
-class MessageSendSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+class MessageSendSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = models.MessageSend
-        fields = '__all__'

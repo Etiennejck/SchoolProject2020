@@ -21,7 +21,7 @@ class MenuViewSet(viewsets.ModelViewSet):
 
 class RulesViewSet(viewsets.ModelViewSet):
     queryset = Rules.objects.all()
-    serializer_class = MenuSerializer
+    serializer_class = RulesSerializer
 
 class SchoolYearViewSet(viewsets.ModelViewSet):
     queryset = School_year.objects.all()
@@ -127,33 +127,40 @@ def index(request):
 #     Student.objects.filter(parents_id__mail=user.email).update(class_journal=message)
 
 def getStudentList(classId=None):
-     if classId:#filtrage des étudiants par id
-         return Student.objects.get(id=classId)
-     else:
-         return Student.objects.all()
+    """Return a student or the full student list."""
+    if classId:  # filtrage des étudiants par id
+        return Student.objects.get(id=classId)
+    else:
+        return Student.objects.all()
 
 def getChildren(parentEmail):
+    """Return children for a given parent."""
     return Student.objects.filter(id_parent_id=parentEmail)
 
 def getStudentById(id):
+    """Return a student identified by its id."""
     return Student.objects.get(id=id)
 
 def setStudentAttendee(id):
+    """Toggle presence flag for a student."""
     Student.objects.filter(pk=id).update(presence=not Student.objects.get(pk=id).presence)
 
 def getJDCList(jdcId=None):
+    """Return class diaries or one diary if an id is provided."""
     if jdcId:
         return ClassDiary.objects.get(id=jdcId)
     else:
-        return ClassDiaryViewSet.queryset.all()
+        return ClassDiary.objects.all()
 
 def getCommunication(studId=None):
+    """Return communications or one if an id is provided."""
     if studId:
         return Communication.objects.get(id=studId)
     else:
         return Communication.objects.all()
 
 def getAbsence(AbsencestudId=None):
+    """Return absences or one absence for the provided id."""
     if AbsencestudId:
         return Absence.objects.get(id=AbsencestudId)
     else:
@@ -161,12 +168,14 @@ def getAbsence(AbsencestudId=None):
 
 
 def getParentList(classId=None):
+    """Return parents or one parent if an id is provided."""
     if classId:  # filtrage des étudiants par id
         return Parent.objects.get(id=classId)
     else:
         return Parent.objects.all()
 
 def getProfessor(classId=None):
+    """Return employees or one employee if an id is provided."""
     if classId:  # filtrage des étudiants par id
         return Employee.objects.get(id=classId)
     else:
@@ -174,18 +183,21 @@ def getProfessor(classId=None):
 
 
 def getEvents(classId=None):
+    """Return events or one event if an id is provided."""
     if classId:  # filtrage des étudiants par id
         return Event.objects.get(id=classId)
     else:
         return Event.objects.all()
 
 def getMessageSend(MessageSendId=None):
+    """Return messages or one message if an id is provided."""
     if MessageSendId:  # filtrage des étudiants par id
         return MessageSend.objects.get(id=MessageSendId)
     else:
         return MessageSend.objects.all()
 
 def getMenu(MenuId=None):
+    """Return menus or one menu if an id is provided."""
     if MenuId:  # filtrage des étudiants par id
         return Menu.objects.get(id=MenuId)
     else:
